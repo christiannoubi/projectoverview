@@ -1,4 +1,7 @@
 package de.adorsys.projectoverview.repository;
 
-public class ClientRepository {
+import de.adorsys.projectoverview.domain.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ClientRepository extends JpaRepository<Client,Long> {
 }

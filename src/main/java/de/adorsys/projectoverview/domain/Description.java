@@ -1,12 +1,12 @@
 package de.adorsys.projectoverview.domain;
 
 import java.util.Date;
-import java.util.Timer;
+import java.time.ZonedDateTime;
 
 public class Description {
 
     private Date calenderWeeks;
-    private Timer time;
+    private ZonedDateTime time;
     private double budget;
     private String quality;
 
@@ -18,11 +18,11 @@ public class Description {
         this.calenderWeeks = calenderWeeks;
     }
 
-    public Timer getTime() {
+    public ZonedDateTime getTime() {
         return time;
     }
 
-    public void setTime(Timer time) {
+    public void setTime(ZonedDateTime time) {
         this.time = time;
     }
 

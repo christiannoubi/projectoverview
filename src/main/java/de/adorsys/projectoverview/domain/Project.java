@@ -4,18 +4,18 @@ import java.util.List;
 
 public class Project {
 
-    private List <Employee> projectOwner;
+    private Client projectOwner;
     private List <Employee> projectManager;
     private List <Employee> scrumMaster;
     private List <Employee> technicalLead;
     private List <Employee> developer;
     private List <Employee> devOps;
 
-    public List<Employee> getProjectOwner() {
+    public Client getProjectOwner() {
         return projectOwner;
     }
 
-    public void setProjectOwner(List<Employee> projectOwner) {
+    public void setProjectOwner(Client projectOwner) {
         this.projectOwner = projectOwner;
     }
 
