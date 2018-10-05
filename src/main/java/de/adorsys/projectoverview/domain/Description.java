@@ -10,6 +10,16 @@ public class Description {
     private double budget;
     private String quality;
 
+    public Description() {
+    }
+
+    public Description(Date calenderWeeks, ZonedDateTime time, double budget, String quality) {
+        this.calenderWeeks = calenderWeeks;
+        this.time = time;
+        this.budget = budget;
+        this.quality = quality;
+    }
+
     public Date getCalenderWeeks() {
         return calenderWeeks;
     }

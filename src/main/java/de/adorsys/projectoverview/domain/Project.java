@@ -11,6 +11,18 @@ public class Project {
     private List <Employee> developer;
     private List <Employee> devOps;
 
+    public Project() {
+    }
+
+    public Project(Client projectOwner, List<Employee> projectManager, List<Employee> scrumMaster, List<Employee> technicalLead, List<Employee> developer, List<Employee> devOps) {
+        this.projectOwner = projectOwner;
+        this.projectManager = projectManager;
+        this.scrumMaster = scrumMaster;
+        this.technicalLead = technicalLead;
+        this.developer = developer;
+        this.devOps = devOps;
+    }
+
     public Client getProjectOwner() {
         return projectOwner;
     }

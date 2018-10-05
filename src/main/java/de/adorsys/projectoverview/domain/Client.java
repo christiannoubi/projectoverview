@@ -10,10 +10,13 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String nameClient;
     private String addressClient;
     private String emailClient;
-    private Long id;
+
+    public Client() {
+    }
 
     public Client(String nameClient, String addressClient, String emailClient ) {
         this.addressClient = addressClient;

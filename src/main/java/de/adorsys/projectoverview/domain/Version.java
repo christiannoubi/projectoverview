@@ -7,6 +7,14 @@ public class Version {
     private String title;
     private List <Description> description;
 
+    public Version() {
+    }
+
+    public Version(String title, List<Description> description) {
+        this.title = title;
+        this.description = description;
+    }
+
     public String getTitle() {
         return title;
     }
