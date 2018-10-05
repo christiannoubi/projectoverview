@@ -1,10 +1,33 @@
 package de.adorsys.projectoverview.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Client {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String nameClient;
     private String addressClient;
+    private String emailClient;
     private Long id;
+
+    public Client(String nameClient, String addressClient, String emailClient ) {
+        this.addressClient = addressClient;
+        this.emailClient = emailClient;
+        this.nameClient = nameClient;
+    }
+
+    public String getEmailClient() {
+        return emailClient;
+    }
+
+    public void setEmailClient(String emailClient) {
+        this.emailClient = emailClient;
+    }
 
     public Long getId() {
         return id;

@@ -13,6 +13,33 @@ public class Employee {
     private Long id;
     private String name;
     private String address;
+    private String email;
+    private String abbreviation;
+
+    public Employee( String abbreviation, String name, String address, String email) {
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.abbreviation = abbreviation;
+    }
+    public Employee(){
+
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAbbreviation() {
+        return abbreviation;
+    }
+
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
+    }
 
     public Long getId() {
         return id;
