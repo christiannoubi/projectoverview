@@ -3,10 +3,11 @@ package de.adorsys.projectoverview.service;
 import de.adorsys.projectoverview.domain.Employee;
 import de.adorsys.projectoverview.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class EmployeeService {
 
     @Autowired
