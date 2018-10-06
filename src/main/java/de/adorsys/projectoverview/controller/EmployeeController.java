@@ -33,7 +33,7 @@ public class EmployeeController {
         return  new ResponseEntity<Object>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "saveEmployee", method = RequestMethod.POST)
+    @RequestMapping(value = "saveEmployee", method = RequestMethod.POST)  // ajouter un employee dans la base de donnée
     public ResponseEntity <?>save(@RequestBody Employee employee) {
         employeeService.save(employee);
 

@@ -18,10 +18,11 @@ public class Client {
     public Client() {
     }
 
-    public Client(String nameClient, String addressClient, String emailClient ) {
-        this.addressClient = addressClient;
-        this.emailClient = emailClient;
+    public Client(String nameClient,  String emailClient, String addressClient) {
+
         this.nameClient = nameClient;
+        this.emailClient = emailClient;
+        this.addressClient = addressClient;
     }
 
     public String getEmailClient() {

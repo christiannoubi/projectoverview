@@ -33,7 +33,7 @@ public class ClientController {
         return  new ResponseEntity<Object>(clientService.getAllClients(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "saveEmployee", method = RequestMethod.POST)
+    @RequestMapping(value = "saveClient", method = RequestMethod.POST)
     public ResponseEntity <?>save(@RequestBody Client client) {
         clientService.save(client);
 
