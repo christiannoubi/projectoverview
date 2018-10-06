@@ -14,7 +14,7 @@ public class ClientService {
     @Autowired
     ClientRepository clientRepository;
 
-    public List<Client> getAllEmployees() {
+    public List<Client> getAllClients() {
         return clientRepository.findAll();
     }
 
@@ -22,13 +22,13 @@ public class ClientService {
         return clientRepository.save(employee);
     }
 
-    public void deleteEmployees (Long id){
+    public void deleteClients (Long id){
 
-        Client employee = clientRepository.findById(id).orElse(new Client());
-        clientRepository.delete(employee);
+        Client client = clientRepository.findById(id).orElse(new Client());
+        clientRepository.delete(client);
     }
     public Optional<Client> findById(Long id){
-        Optional<Client> employee = clientRepository.findById(id);
-        return employee;
+        Optional<Client> client = clientRepository.findById(id);
+        return client;
     }
 }

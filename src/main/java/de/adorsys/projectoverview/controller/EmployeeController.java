@@ -14,30 +14,30 @@ import java.util.Optional;
 public class EmployeeController {
 
     @Autowired
-    EmployeeService employeService;
+    EmployeeService employeeService;
 
 
     @GetMapping
     public ResponseEntity<?> getAllEmployees() {
-        return new ResponseEntity<Object>(employeService.getAllEmployees(), HttpStatus.OK);
+        return new ResponseEntity<Object>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
 
 
     @RequestMapping(value = "del/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteEmployees(@PathVariable Long id){
-        Optional<Employee> employee = employeService.findById(id  );
+        Optional<Employee> employee = employeeService.findById(id  );
         if (!employee.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        employeService.deleteEmployees(id);
-        return  new ResponseEntity<Object>(employeService.getAllEmployees(), HttpStatus.OK);
+        employeeService.deleteEmployees(id);
+        return  new ResponseEntity<Object>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "saveEmployee", method = RequestMethod.POST)
     public ResponseEntity <?>save(@RequestBody Employee employee) {
-        employeService.save(employee);
+        employeeService.save(employee);
 
-        return  new ResponseEntity<Object>(employeService.getAllEmployees(), HttpStatus.OK);
+        return  new ResponseEntity<Object>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
 }
 
