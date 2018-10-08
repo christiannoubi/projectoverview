@@ -12,8 +12,9 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nameClient;
-    private String addressClient;
     private String emailClient;
+    private String addressClient;
+
 
     public Client() {
     }

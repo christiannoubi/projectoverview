@@ -1,6 +1,7 @@
 package de.adorsys.projectoverview.service;
 
 import de.adorsys.projectoverview.domain.Client;
+import de.adorsys.projectoverview.domain.Employee;
 import de.adorsys.projectoverview.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,20 @@ public class ClientService {
     public Optional<Client> findById(Long id){
         Optional<Client> client = clientRepository.findById(id);
         return client;
+    }
+    public Client updateClient(Long id, Client client) {
+        Optional<Client> entity = findById(id);
+
+        if (!entity.isPresent()) {
+            throw new RuntimeException("Unable to update. User with id " + id + " not found.");
+        }
+        Client clientEntity = entity.get();
+        clientEntity.setNameClient(client.getNameClient());
+        clientEntity.setAddressClient(client.getAddressClient());
+        clientEntity.setEmailClient(client.getEmailClient());
+
+
+        clientRepository.save(clientEntity);
+        return clientEntity;
     }
 }

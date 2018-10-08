@@ -1,5 +1,6 @@
 package de.adorsys.projectoverview.controller;
 import de.adorsys.projectoverview.domain.Client;
+import de.adorsys.projectoverview.domain.Employee;
 import de.adorsys.projectoverview.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +22,7 @@ public class ClientController {
     public ResponseEntity<?> getAllClients() {
         return new ResponseEntity<Object>(clientService.getAllClients(), HttpStatus.OK);
     }
-
-
+    //-------------------------delete a Employee-------------------------
     @RequestMapping(value = "del/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteClients(@PathVariable Long id){
         Optional<Client> client = clientService.findById(id  );
@@ -32,12 +32,20 @@ public class ClientController {
         clientService.deleteClients(id);
         return  new ResponseEntity<Object>(clientService.getAllClients(), HttpStatus.OK);
     }
+    //------------------------save or add a Employee-----------------------
 
-    @RequestMapping(value = "saveClient", method = RequestMethod.POST)
+    @RequestMapping(value = "save-client", method = RequestMethod.POST)
     public ResponseEntity <?>save(@RequestBody Client client) {
         clientService.save(client);
 
         return  new ResponseEntity<Object>(clientService.getAllClients(), HttpStatus.OK);
+    }
+    // ------------------------update a Employee-------------------------
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateClient(@PathVariable("id") Long id, @RequestBody Client client) {
+
+        Client updated = clientService.updateClient(id, client);
+        return new ResponseEntity<Client>(updated, HttpStatus.OK);
     }
 }
 
