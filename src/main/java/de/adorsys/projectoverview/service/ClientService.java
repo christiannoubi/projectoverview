@@ -19,8 +19,8 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    public Client save(Client employee) {
-        return clientRepository.save(employee);
+    public Client save(Client client) {
+        return clientRepository.save(client);
     }
 
     public void deleteClients (Long id){

@@ -23,7 +23,7 @@ public class ClientController {
         return new ResponseEntity<Object>(clientService.getAllClients(), HttpStatus.OK);
     }
     //-------------------------delete a Employee-------------------------
-    @RequestMapping(value = "del/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteClients(@PathVariable Long id){
         Optional<Client> client = clientService.findById(id  );
         if (!client.isPresent()){
@@ -34,7 +34,7 @@ public class ClientController {
     }
     //------------------------save or add a Employee-----------------------
 
-    @RequestMapping(value = "save-client", method = RequestMethod.POST)
+    @RequestMapping(value = "/clients", method = RequestMethod.POST)
     public ResponseEntity <?>save(@RequestBody Client client) {
         clientService.save(client);
 

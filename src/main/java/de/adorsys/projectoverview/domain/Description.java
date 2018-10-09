@@ -1,10 +1,16 @@
 package de.adorsys.projectoverview.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 import java.time.ZonedDateTime;
-
+@Entity
 public class Description {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private Date calenderWeeks;
     private ZonedDateTime time;
     private double budget;
@@ -18,6 +24,14 @@ public class Description {
         this.time = time;
         this.budget = budget;
         this.quality = quality;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Date getCalenderWeeks() {

@@ -24,7 +24,7 @@ public class EmployeeController {
     }
 
     //-------------------------delete a Employee-------------------------
-    @RequestMapping(value = "del/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteEmployees(@PathVariable Long id){
         Optional<Employee> employee = employeeService.findById(id);
         if (!employee.isPresent()){
@@ -34,7 +34,7 @@ public class EmployeeController {
         return  new ResponseEntity<Object>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
     //------------------------save or add a Employee-----------------------
-    @RequestMapping(value = "save-employee", method = RequestMethod.POST)
+    @RequestMapping(value = "/employees", method = RequestMethod.POST)
     public ResponseEntity <?>save(@RequestBody Employee employee) {
         employeeService.save(employee);
 
