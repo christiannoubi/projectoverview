@@ -1,6 +1,6 @@
 package de.adorsys.projectoverview.controller;
+import java.util.List;
 import de.adorsys.projectoverview.domain.Client;
-import de.adorsys.projectoverview.domain.Employee;
 import de.adorsys.projectoverview.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,33 +19,33 @@ public class ClientController {
 
 
     @GetMapping
-    public ResponseEntity<?> getAllClients() {
-        return new ResponseEntity<Object>(clientService.getAllClients(), HttpStatus.OK);
+    public ResponseEntity<List<Client>> getAllClients() {
+        return new ResponseEntity<>(clientService.getAllClients(), HttpStatus.OK);
     }
-    //-------------------------delete a Employee-------------------------
+    //-------------------------delete a Client-------------------------
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteClients(@PathVariable Long id){
+    public ResponseEntity<Void> deleteClient(@PathVariable Long id){
         Optional<Client> client = clientService.findById(id  );
         if (!client.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         clientService.deleteClients(id);
-        return  new ResponseEntity<Object>(clientService.getAllClients(), HttpStatus.OK);
+        return  new ResponseEntity<>(HttpStatus.GONE);
     }
-    //------------------------save or add a Employee-----------------------
+    //------------------------save or add a Client-----------------------
 
     @RequestMapping(value = "/clients", method = RequestMethod.POST)
-    public ResponseEntity <?>save(@RequestBody Client client) {
+    public ResponseEntity<Client> saveClient(@RequestBody Client client) {
         clientService.save(client);
 
-        return  new ResponseEntity<Object>(clientService.getAllClients(), HttpStatus.OK);
+        return  new ResponseEntity<>(client, HttpStatus.OK);
     }
-    // ------------------------update a Employee-------------------------
+    // ------------------------update a Client-------------------------
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateClient(@PathVariable("id") Long id, @RequestBody Client client) {
+    public ResponseEntity<Client> updateClient(@PathVariable("id") Long id, @RequestBody Client client) {
 
         Client updated = clientService.updateClient(id, client);
-        return new ResponseEntity<Client>(updated, HttpStatus.OK);
+        return new ResponseEntity<>(updated, HttpStatus.OK);
     }
 }
 

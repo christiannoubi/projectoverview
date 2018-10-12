@@ -29,8 +29,7 @@ public class ClientService {
         clientRepository.delete(client);
     }
     public Optional<Client> findById(Long id){
-        Optional<Client> client = clientRepository.findById(id);
-        return client;
+        return clientRepository.findById(id);
     }
     public Client updateClient(Long id, Client client) {
         Optional<Client> entity = findById(id);

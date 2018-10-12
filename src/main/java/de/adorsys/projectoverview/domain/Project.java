@@ -1,26 +1,52 @@
 package de.adorsys.projectoverview.domain;
 
-import java.util.List;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
 
 public class Project {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
+    @ManyToOne
     private Client projectOwner;
-    private List <Employee> projectManager;
-    private List <Employee> scrumMaster;
-    private List <Employee> technicalLead;
-    private List <Employee> developer;
-    private List <Employee> devOps;
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    private Set<Employee> projectManager = new HashSet<>();
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    private Set <Employee> scrumMaster = new HashSet<>();
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    private Set <Employee> technicalLead = new HashSet<>();
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    private Set <Employee> developer = new HashSet<>();
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    private Set <Employee> devOps = new HashSet<>();
 
     public Project() {
     }
 
-    public Project(Client projectOwner, List<Employee> projectManager, List<Employee> scrumMaster, List<Employee> technicalLead, List<Employee> developer, List<Employee> devOps) {
+    public Project(Client projectOwner, Set<Employee> projectManager, Set<Employee> scrumMaster, Set<Employee> technicalLead, Set<Employee> developer, Set<Employee> devOps) {
         this.projectOwner = projectOwner;
         this.projectManager = projectManager;
         this.scrumMaster = scrumMaster;
         this.technicalLead = technicalLead;
         this.developer = developer;
         this.devOps = devOps;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Client getProjectOwner() {
@@ -31,43 +57,43 @@ public class Project {
         this.projectOwner = projectOwner;
     }
 
-    public List<Employee> getProjectManager() {
+    public Set<Employee> getProjectManager() {
         return projectManager;
     }
 
-    public void setProjectManager(List<Employee> projectManager) {
+    public void setProjectManager(Set<Employee> projectManager) {
         this.projectManager = projectManager;
     }
 
-    public List<Employee> getScrumMaster() {
+    public Set<Employee> getScrumMaster() {
         return scrumMaster;
     }
 
-    public void setScrumMaster(List<Employee> scrumMaster) {
+    public void setScrumMaster(Set<Employee> scrumMaster) {
         this.scrumMaster = scrumMaster;
     }
 
-    public List<Employee> getTechnicalLead() {
+    public Set<Employee> getTechnicalLead() {
         return technicalLead;
     }
 
-    public void setTechnicalLead(List<Employee> technicalLead) {
+    public void setTechnicalLead(Set<Employee> technicalLead) {
         this.technicalLead = technicalLead;
     }
 
-    public List<Employee> getDeveloper() {
+    public Set<Employee> getDeveloper() {
         return developer;
     }
 
-    public void setDeveloper(List<Employee> developer) {
+    public void setDeveloper(Set<Employee> developer) {
         this.developer = developer;
     }
 
-    public List<Employee> getDevOps() {
+    public Set<Employee> getDevOps() {
         return devOps;
     }
 
-    public void setDevOps(List<Employee> devOps) {
+    public void setDevOps(Set<Employee> devOps) {
         this.devOps = devOps;
     }
 }
