@@ -30,4 +30,18 @@ public class DescriptionService {
     public Optional<Description>findById(Long id){
         return descriptionRepository.findById(id);
     }
+    public Description updateDescription(Long id, Description description){
+        Optional<Description> entity = findById(id);
+        if(!entity.isPresent()){
+            throw new RuntimeException("Unable to update.User with id"+ id + "not found.");
+        }
+        Description descriptionEntity = entity.get();
+        descriptionEntity.setBudget(description.getBudget());
+        descriptionEntity.setCalenderWeeks(description.getCalenderWeeks());
+        descriptionEntity.setQuality(description.getQuality());
+        descriptionEntity.setTime(description.getTime());
+
+        descriptionRepository.save(descriptionEntity);
+        return descriptionEntity;
+    }
 }

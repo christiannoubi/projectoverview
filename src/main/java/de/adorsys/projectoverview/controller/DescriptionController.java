@@ -37,4 +37,10 @@ public class DescriptionController {
         descriptionService.save(description);
         return new ResponseEntity<>(description, HttpStatus.OK);
     }
+    //----------------------------update a Description-----------------------
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Description> updateDescription(@PathVariable("id")Long id, @RequestBody Description description){
+        Description updated = descriptionService.updateDescription(id, description);
+        return  new ResponseEntity<>(updated,HttpStatus.OK);
+    }
 }
