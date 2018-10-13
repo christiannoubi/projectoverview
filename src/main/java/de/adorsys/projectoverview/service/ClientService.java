@@ -1,7 +1,6 @@
 package de.adorsys.projectoverview.service;
 
 import de.adorsys.projectoverview.domain.Client;
-import de.adorsys.projectoverview.domain.Employee;
 import de.adorsys.projectoverview.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
