@@ -3,12 +3,12 @@ package de.adorsys.projectoverview.service;
 import de.adorsys.projectoverview.domain.Employee;
 import de.adorsys.projectoverview.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class EmployeeService {
 
@@ -24,7 +24,6 @@ public class EmployeeService {
     }
 
     public void deleteEmployees (Long id){
-
         Employee employee = employeeRepository.findById(id).orElse(new Employee());
         employeeRepository.delete(employee);
     }
@@ -32,10 +31,12 @@ public class EmployeeService {
         Optional<Employee> employee = employeeRepository.findById(id);
         return employee;
     }
-
+    public void getEmployee (Long id) {
+        //Client client = clientRepository.findById(id).orElse(new Client());
+        employeeRepository.getOne(id);
+    }
     public Employee updateEmployee(Long id, Employee employee) {
         Optional<Employee> entity = findById(id);
-
         if (!entity.isPresent()) {
             throw new RuntimeException("Unable to update. User with id " + id + " not found.");
         }

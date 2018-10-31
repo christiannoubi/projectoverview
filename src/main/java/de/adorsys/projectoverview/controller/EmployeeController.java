@@ -1,8 +1,10 @@
 package de.adorsys.projectoverview.controller;
 
+import de.adorsys.projectoverview.domain.Client;
 import de.adorsys.projectoverview.domain.Employee;
 import de.adorsys.projectoverview.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,20 +13,36 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/employee")
+/*@CrossOrigin(origins = "http://localhost:4700")*/
 public class EmployeeController {
 
 
     @Autowired
     EmployeeService employeeService;
 
+
+   // @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+
     //--------------------------liste of Employee------------------------
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4700")
     public ResponseEntity<?> getAllEmployees() {
         return new ResponseEntity<Object>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
-
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @CrossOrigin(origins = "http://localhost:4700")
+    public ResponseEntity<?> getEmployee(@PathVariable Long id){
+        Optional<Employee> client = employeeService.findById(id);
+        if (!client.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        employeeService.getEmployee(id);
+        return  new ResponseEntity<Object>(employeeService.getAllEmployees(), HttpStatus.OK);
+    }
     //-------------------------delete a Employee-------------------------
+    @CrossOrigin(origins = "http://localhost:4700")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+
     public ResponseEntity<?> deleteEmployees(@PathVariable Long id){
         Optional<Employee> employee = employeeService.findById(id);
         if (!employee.isPresent()){
@@ -34,7 +52,8 @@ public class EmployeeController {
         return  new ResponseEntity<Object>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
     //------------------------save or add a Employee-----------------------
-    @RequestMapping(value = "/employees", method = RequestMethod.POST)
+    @RequestMapping( method = RequestMethod.POST)
+    @CrossOrigin(origins = "http://localhost:4700")
     public ResponseEntity <?>save(@RequestBody Employee employee) {
         employeeService.save(employee);
 
@@ -42,6 +61,7 @@ public class EmployeeController {
     }
     // ------------------------update a Employee-------------------------
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "http://localhost:4700")
     public ResponseEntity<?> updateEmployee(@PathVariable("id") Long id, @RequestBody Employee employee) {
 
         Employee updated = employeeService.updateEmployee(id, employee);

@@ -23,16 +23,19 @@ public class ClientService {
     }
 
     public void deleteClients (Long id){
-
         Client client = clientRepository.findById(id).orElse(new Client());
         clientRepository.delete(client);
+    }
+    public void getClients (Long id) {
+        //Client client = clientRepository.findById(id).orElse(new Client());
+        clientRepository.getOne(id);
     }
     public Optional<Client> findById(Long id){
         return clientRepository.findById(id);
     }
+
     public Client updateClient(Long id, Client client) {
         Optional<Client> entity = findById(id);
-
         if (!entity.isPresent()) {
             throw new RuntimeException("Unable to update. User with id " + id + " not found.");
         }
@@ -40,8 +43,6 @@ public class ClientService {
         clientEntity.setNameClient(client.getNameClient());
         clientEntity.setAddressClient(client.getAddressClient());
         clientEntity.setEmailClient(client.getEmailClient());
-
-
         clientRepository.save(clientEntity);
         return clientEntity;
     }
