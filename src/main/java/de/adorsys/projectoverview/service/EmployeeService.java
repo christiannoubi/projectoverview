@@ -19,6 +19,9 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
+    public Optional<Employee>getSingleEmployee(Long id) {
+        return employeeRepository.findById(id);
+    }
     public Employee save(Employee employee) {
         return employeeRepository.save(employee);
     }
@@ -31,10 +34,7 @@ public class EmployeeService {
         Optional<Employee> employee = employeeRepository.findById(id);
         return employee;
     }
-    public void getEmployee (Long id) {
-        //Client client = clientRepository.findById(id).orElse(new Client());
-        employeeRepository.getOne(id);
-    }
+
     public Employee updateEmployee(Long id, Employee employee) {
         Optional<Employee> entity = findById(id);
         if (!entity.isPresent()) {

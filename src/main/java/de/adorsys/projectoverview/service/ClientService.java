@@ -18,6 +18,10 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
+    public Optional<Client>getSingleClient(Long id) {
+        return clientRepository.findById(id);
+    }
+
     public Client save(Client client) {
         return clientRepository.save(client);
     }
@@ -26,10 +30,7 @@ public class ClientService {
         Client client = clientRepository.findById(id).orElse(new Client());
         clientRepository.delete(client);
     }
-    public void getClients (Long id) {
-        //Client client = clientRepository.findById(id).orElse(new Client());
-        clientRepository.getOne(id);
-    }
+
     public Optional<Client> findById(Long id){
         return clientRepository.findById(id);
     }
