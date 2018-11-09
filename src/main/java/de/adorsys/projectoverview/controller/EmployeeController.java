@@ -18,18 +18,15 @@ public class EmployeeController {
 
     //--------------------------liste of Employee------------------------
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<?> getAllEmployees() {
         return new ResponseEntity<Object>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
     //-------------------------get a single Employee-------------------------
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Optional<Employee>> getSingleEmployee (@PathVariable Long id) {
         return new ResponseEntity<>(employeeService.getSingleEmployee(id), HttpStatus.OK);
     }
     //-------------------------delete a Employee-------------------------
-    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteEmployee (@PathVariable Long id){
         Optional<Employee> employee = employeeService.findById(id);
@@ -41,14 +38,12 @@ public class EmployeeController {
     }
     //------------------------save or add a Employee-----------------------
     @RequestMapping( method = RequestMethod.POST)
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity <?>save(@RequestBody Employee employee) {
         employeeService.save(employee);
         return  new ResponseEntity<Object>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
     // ------------------------update a Employee-------------------------
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Employee> updateEmployee(@PathVariable("id") Long id, @RequestBody Employee employee) {
         Employee updated = employeeService.updateEmployee(id, employee);
         return new ResponseEntity<>(updated, HttpStatus.OK);

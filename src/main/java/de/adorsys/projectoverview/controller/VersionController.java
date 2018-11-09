@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -17,8 +16,9 @@ public class VersionController {
     @Autowired
     VersionService versionService;
 
-    @GetMapping
+
     //-------------------------get all Version-------------------------------
+    @GetMapping
     public ResponseEntity<List<Version>>getAllVersions(){
         return new ResponseEntity<>(versionService.getAllVersions(),HttpStatus.OK);
     }
@@ -38,7 +38,7 @@ public class VersionController {
         return  new ResponseEntity<>(HttpStatus.GONE);
     }
     //------------------------save or add a Version-----------------------
-    @RequestMapping(value = "/versions", method = RequestMethod.POST)
+    @RequestMapping( method = RequestMethod.POST)
     public ResponseEntity<Version> saveVersion(@RequestBody Version version) {
         versionService.save(version);
         return  new ResponseEntity<>(version, HttpStatus.OK);
