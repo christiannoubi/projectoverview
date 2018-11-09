@@ -1,11 +1,8 @@
 package de.adorsys.projectoverview.service;
-
-
 import de.adorsys.projectoverview.domain.Description;
 import de.adorsys.projectoverview.repository.DescriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -19,11 +16,14 @@ public class DescriptionService {
         return descriptionRepository.findAll();
     }
 
+    public Optional <Description> getSingleDescription (Long id) {
+        return descriptionRepository.findById(id);
+    }
     public Description save(Description description){
         return descriptionRepository.save(description);
     }
 
-    public void deleteDescriptions( Long id){
+    public void deleteDescription ( Long id){
         Description description = descriptionRepository.findById(id).orElse(new Description());
         descriptionRepository.delete(description);
     }
@@ -40,7 +40,6 @@ public class DescriptionService {
         descriptionEntity.setCalenderWeeks(description.getCalenderWeeks());
         descriptionEntity.setQuality(description.getQuality());
         descriptionEntity.setTime(description.getTime());
-
         descriptionRepository.save(descriptionEntity);
         return descriptionEntity;
     }

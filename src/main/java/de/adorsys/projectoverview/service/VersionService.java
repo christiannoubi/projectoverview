@@ -1,5 +1,4 @@
 package de.adorsys.projectoverview.service;
-
 import de.adorsys.projectoverview.domain.Version;
 import de.adorsys.projectoverview.repository.VersionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,9 @@ public class VersionService {
         return versionRepository.findAll();
     }
 
+    public Optional<Version> getSingleVersion (Long id){
+        return versionRepository.findById(id);
+    }
     public Version save(Version version){
         return versionRepository.save(version);
     }

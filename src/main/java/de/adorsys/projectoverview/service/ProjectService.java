@@ -1,10 +1,8 @@
 package de.adorsys.projectoverview.service;
-
 import de.adorsys.projectoverview.domain.Project;
 import de.adorsys.projectoverview.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -18,21 +16,22 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
+    public Optional<Project> getSingleProject (Long id) {
+        return projectRepository.findById(id);
+    }
     public Project save(Project project) {
         return projectRepository.save(project);
     }
 
-    public void deleteProjects (Long id){
-
+    public void deleteProject (Long id){
         Project project = projectRepository.findById(id).orElse(new Project());
         projectRepository.delete(project);
     }
     public Optional<Project> findById(Long id){
         return projectRepository.findById(id);
     }
-    public Project updateProject(Long id, Project project) {
+    public Project updateProject (Long id, Project project) {
         Optional<Project> entity = findById(id);
-
         if (!entity.isPresent()) {
             throw new RuntimeException("Unable to update. User with id " + id + " not found.");
         }
@@ -43,7 +42,6 @@ public class ProjectService {
         projectEntity.setProjectOwner(project.getProjectOwner());
         projectEntity.setScrumMaster(project.getScrumMaster());
         projectEntity.setTechnicalLead(project.getTechnicalLead());
-
         projectRepository.save(projectEntity);
         return projectEntity;
     }

@@ -1,11 +1,11 @@
 package de.adorsys.projectoverview.domain;
-
+import lombok.*;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-
+@EqualsAndHashCode @ToString
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,16 +31,14 @@ public class Project {
 
     public Project() {
     }
-
-    public Project(Client projectOwner, Set<Employee> projectManager, Set<Employee> scrumMaster, Set<Employee> technicalLead, Set<Employee> developer, Set<Employee> devOps) {
+   /* public Project(Client projectOwner, Set<Employee> projectManager, Set<Employee> scrumMaster, Set<Employee> technicalLead, Set<Employee> developer, Set<Employee> devOps) {
         this.projectOwner = projectOwner;
         this.projectManager = projectManager;
         this.scrumMaster = scrumMaster;
         this.technicalLead = technicalLead;
         this.developer = developer;
         this.devOps = devOps;
-    }
-
+    }*/
     public Long getId() {
         return id;
     }

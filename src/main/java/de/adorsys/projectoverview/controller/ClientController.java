@@ -54,7 +54,6 @@ public class ClientController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<?> updateClient(@PathVariable("id") Long id, @RequestBody Client client) {
-
         Client updated = clientService.updateClient(id, client);
         return new ResponseEntity<Client>(updated, HttpStatus.OK);
     }

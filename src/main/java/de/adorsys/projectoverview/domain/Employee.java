@@ -1,7 +1,5 @@
 package de.adorsys.projectoverview.domain;
-
 import lombok.*;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,12 +19,12 @@ public class Employee {
     private String email;
     private String abbreviation;
 
-    public Employee( String abbreviation, String name, String address, String email) {
+    /*public Employee( String abbreviation, String name, String address, String email) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.abbreviation = abbreviation;
-    }
+    }*/
     public Employee(){
 
     }
